@@ -114,6 +114,13 @@
             margin: 1rem 0;
         }
         
+        .warning-box {
+            background-color: #fff5f5;
+            border-left: 4px solid #ff6b6b;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -157,7 +164,7 @@
             <ul>
                 <li>Collect any personal financial data</li>
                 <li>Access your transaction history or account balances</li>
-                <li>Store your receipts, bills, or financial documents</li>
+                <li>Store your receipts, bills, financial documents, or bank statements</li>
                 <li>Track your spending habits or financial behavior</li>
                 <li>Collect personal identification information</li>
                 <li>Use analytics or tracking tools</li>
@@ -173,6 +180,8 @@
                 <li>Transaction records</li>
                 <li>Income and expense entries</li>
                 <li>Scanned receipts and documents</li>
+                <li>Uploaded bank statement PDFs</li>
+                <li>Converted transaction data from PDFs</li>
                 <li>Categories and tags</li>
                 <li>Financial analysis results</li>
             </ul>
@@ -192,87 +201,129 @@
             <h3>4.1 Apple Intelligence (On-Device)</h3>
             <p>On supported devices with Apple Intelligence:</p>
             <ul>
-                <li>All AI processing occurs locally on your device</li>
-                <li>No data is sent to external servers</li>
+                <li>Basic AI processing occurs locally on your device</li>
+                <li>No data is sent to external servers for simple features</li>
                 <li>Analysis results remain on your device</li>
             </ul>
             
-            <h3>4.2 External LLM Providers</h3>
-            <p>For users who choose to use external AI services:</p>
+            <h3>4.2 External LLM Processing for Complex Features</h3>
+            <p>Certain features require external LLM processing due to their complexity:</p>
+            
+            <div class="warning-box">
+                <p><strong>Bank Statement PDF Conversion:</strong> This feature requires external LLM processing due to the complexity of parsing varied PDF formats and extracting structured financial data. Bank statements contain sensitive financial information and should only be processed through providers you trust.</p>
+            </div>
             
             <table class="privacy-table">
                 <tr>
-                    <th>Scenario</th>
-                    <th>Data Handling</th>
+                    <th>Feature</th>
+                    <th>Processing Requirement</th>
+                    <th>Data Sent</th>
                     <th>User Control</th>
                 </tr>
                 <tr>
-                    <td>Pro users with custom LLM</td>
-                    <td>Data sent to user-specified provider</td>
-                    <td>Full control over provider choice</td>
+                    <td>Basic AI Chat</td>
+                    <td>On-device or External LLM</td>
+                    <td>Chat context and relevant transactions</td>
+                    <td>Can opt out entirely</td>
                 </tr>
                 <tr>
-                    <td>Regions without Apple Intelligence</td>
-                    <td>Data sent to developer-selected provider (with consent)</td>
-                    <td>Must explicitly consent; can opt out</td>
+                    <td>Bank Statement Conversion</td>
+                    <td>External LLM required</td>
+                    <td>PDF content for parsing</td>
+                    <td>Choose your LLM provider</td>
                 </tr>
                 <tr>
-                    <td>User declines external processing</td>
-                    <td>No data sent externally</td>
-                    <td>AI features disabled; all other features available</td>
+                    <td>Receipt Scanning</td>
+                    <td>On-device OCR</td>
+                    <td>None (processed locally)</td>
+                    <td>Always private</td>
                 </tr>
             </table>
             
+            <h3>4.3 LLM Provider Options</h3>
+            <p>For features requiring external processing:</p>
+            <ul>
+                <li><strong>Pro Users:</strong> Can specify their own LLM provider credentials</li>
+                <li><strong>Standard Users in regions without Apple Intelligence:</strong> Must consent to use developer-selected LLM providers</li>
+                <li><strong>Privacy Choice:</strong> Users can decline external processing, but features requiring it will be unavailable</li>
+            </ul>
+            
             <div class="highlight-box">
-                <p><strong>Important:</strong> When using external LLM providers, only the specific data needed for the requested analysis is sent. We recommend reviewing the privacy policy of any external provider you choose to use.</p>
+                <p><strong>Important:</strong> When processing bank statements, only the PDF content necessary for conversion is sent to the LLM provider. The processed data is immediately returned to your device and not stored externally.</p>
             </div>
         </div>
         
         <div class="section">
-            <h2>5. Data Security</h2>
+            <h2>5. Bank Statement Processing Details</h2>
+            <h3>5.1 What Happens When You Upload a Bank Statement</h3>
+            <ol>
+                <li>You select a PDF bank statement from your device</li>
+                <li>You confirm which LLM provider to use for processing</li>
+                <li>The PDF is sent to the LLM provider for parsing</li>
+                <li>Structured transaction data is returned to your device</li>
+                <li>You can review and edit the converted data</li>
+                <li>The data is saved locally on your device</li>
+                <li>You can export to Excel or CSV format</li>
+            </ol>
+            
+            <h3>5.2 Security Measures</h3>
+            <ul>
+                <li>PDFs are transmitted using encrypted connections</li>
+                <li>No permanent copies are retained by the LLM provider</li>
+                <li>Processing is done in isolated sessions</li>
+                <li>You control which statements to process</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>6. Data Security</h2>
             <p>We implement security measures to protect your data:</p>
             <ul>
                 <li><strong>Local Encryption:</strong> Data stored on your device uses iOS security features</li>
                 <li><strong>No Remote Access:</strong> We have no ability to access your device or data</li>
                 <li><strong>Secure Communication:</strong> When external LLM providers are used, data is transmitted using encrypted connections</li>
                 <li><strong>Minimal Data Exposure:</strong> Only necessary data is processed for requested features</li>
+                <li><strong>Temporary Processing:</strong> Bank statements are processed transiently without permanent storage</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>6. Your Rights and Controls</h2>
+            <h2>7. Your Rights and Controls</h2>
             <p>You have complete control over your data:</p>
             
-            <h3>6.1 Access and Portability</h3>
+            <h3>7.1 Access and Portability</h3>
             <ul>
                 <li>Access all your data directly within the App</li>
-                <li>Export your data at any time</li>
+                <li>Export transaction data to Excel or CSV</li>
+                <li>Download your complete financial records</li>
                 <li>Transfer data between devices using iCloud</li>
             </ul>
             
-            <h3>6.2 Deletion</h3>
+            <h3>7.2 Deletion</h3>
             <ul>
                 <li>Delete individual entries within the App</li>
+                <li>Remove uploaded bank statements</li>
                 <li>Clear all data by uninstalling the App</li>
                 <li>Remove iCloud backups through your device settings</li>
             </ul>
             
-            <h3>6.3 AI Features Control</h3>
+            <h3>7.3 Processing Control</h3>
             <ul>
                 <li>Choose whether to use AI features</li>
-                <li>Select your preferred LLM provider (Pro users)</li>
+                <li>Select your preferred LLM provider</li>
+                <li>Decide which bank statements to process</li>
                 <li>Opt out of external processing at any time</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>7. Children's Privacy</h2>
+            <h2>8. Children's Privacy</h2>
             <p>Monait is not directed at children under 13 years of age. We do not knowingly collect information from children under 13. The App requires users to be of legal age to manage their own financial affairs.</p>
         </div>
         
         <div class="section">
-            <h2>8. Third-Party Services</h2>
-            <h3>8.1 Apple Services</h3>
+            <h2>9. Third-Party Services</h2>
+            <h3>9.1 Apple Services</h3>
             <p>The App integrates with the following Apple services:</p>
             <ul>
                 <li><strong>iCloud:</strong> For data backup (optional)</li>
@@ -280,29 +331,31 @@
             </ul>
             <p>These services are governed by Apple's privacy policies.</p>
             
-            <h3>8.2 External LLM Providers</h3>
-            <p>If you choose to use external LLM providers, please note:</p>
+            <h3>9.2 External LLM Providers</h3>
+            <p>If you choose to use external LLM providers for AI features or bank statement processing:</p>
             <ul>
                 <li>Each provider has its own privacy policy</li>
-                <li>We are not responsible for third-party privacy practices</li>
                 <li>We recommend reviewing provider policies before use</li>
-                <li>You can discontinue use of external providers at any time</li>
+                <li>We are not responsible for third-party privacy practices</li>
+                <li>You can change providers or discontinue use at any time</li>
+                <li>Bank statement processing requires explicit consent each time</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>9. International Data Transfers</h2>
+            <h2>10. International Data Transfers</h2>
             <p>When using external LLM providers:</p>
             <ul>
                 <li>Data may be processed in different countries</li>
+                <li>Bank statements may be processed in the LLM provider's jurisdiction</li>
                 <li>Transfer depends on your chosen provider's location</li>
                 <li>You consent to such transfers when selecting a provider</li>
-                <li>You can avoid international transfers by using only on-device features</li>
+                <li>You can avoid international transfers by not using features requiring external processing</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>10. Changes to This Policy</h2>
+            <h2>11. Changes to This Policy</h2>
             <p>We may update this Privacy Policy to reflect changes in our practices or for legal reasons. We will notify you of material changes through:</p>
             <ul>
                 <li>App Store update notes</li>
@@ -312,43 +365,46 @@
         </div>
         
         <div class="section">
-            <h2>11. Data Retention</h2>
+            <h2>12. Data Retention</h2>
             <p>Since we do not collect or store your data on our servers:</p>
             <ul>
                 <li>Data remains on your device until you delete it</li>
+                <li>Uploaded bank statements are stored locally after processing</li>
                 <li>iCloud backups are retained according to Apple's policies</li>
-                <li>External LLM providers may have their own retention policies</li>
-                <li>We recommend regularly reviewing and managing your data</li>
+                <li>External LLM providers process data transiently per their policies</li>
+                <li>We recommend regularly reviewing and managing your stored data</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>12. Your California Privacy Rights</h2>
+            <h2>13. Your California Privacy Rights</h2>
             <p>If you are a California resident, you have specific rights under the California Consumer Privacy Act (CCPA). However, since we do not collect personal information as defined by CCPA, these rights primarily relate to your control over data on your own device.</p>
         </div>
         
         <div class="section">
-            <h2>13. European Users</h2>
+            <h2>14. European Users</h2>
             <p>For users in the European Economic Area (EEA):</p>
             <ul>
                 <li>We comply with GDPR requirements</li>
                 <li>We do not collect or process personal data</li>
                 <li>You maintain full control over your information</li>
-                <li>External LLM processing requires explicit consent</li>
+                <li>Bank statement processing requires explicit consent</li>
+                <li>You have the right to data portability through our export features</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>14. Contact Us</h2>
+            <h2>15. Contact Us</h2>
             <p>If you have questions about this Privacy Policy or how your information is handled:</p>
-            <p>Email: <a href="mailto:privacy@monait.app">contact@jinheng.me</a></p>
+            <p>Email: <a href="mailto:contact@jinheng.me">contact at jinheng dot me</a></p>
+            <p>Support: <a href="mailto:contact@jinheng.me">contact at jinheng dot me</a></p>
             
-            <p>When contacting us, please do not include any personal financial information in your communications.</p>
+            <p>When contacting us, please do not include any personal financial information or bank statements in your communications.</p>
         </div>
         
         <div class="section">
-            <h2>15. Acknowledgment</h2>
-            <p>By using Monait, you acknowledge that you have read and understood this Privacy Policy and agree to its terms regarding the handling of your information.</p>
+            <h2>16. Acknowledgment</h2>
+            <p>By using Monait, you acknowledge that you have read and understood this Privacy Policy and agree to its terms regarding the handling of your information, including the processing of bank statements through external LLM providers when you choose to use such features.</p>
         </div>
     </div>
 </body>
